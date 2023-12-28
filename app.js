@@ -33,6 +33,7 @@ function init() {
         document.getElementById("2").textContent = minutos1
         document.getElementById("3").textContent = segundo2
         document.getElementById("4").textContent = segundo1
+        document.title = `${minutos2}${minutos1}:${segundo2}${segundo1}`
         
     
         console.log(minutos2, minutos1, segundo2, segundo1)
