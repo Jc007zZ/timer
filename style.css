@@ -1,0 +1,112 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+}
+
+.white {
+    position: absolute;
+    left: 50%;
+    background-color: white;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+} 
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.numbers{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 7rem ;
+}
+
+div.numbers span {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 6rem;
+    padding: 0rem 1.5rem;
+    margin: 0.2rem;
+    
+}
+
+.firthalf{
+    background-color: rgba(158, 158, 158, 0.506);
+    color: rgb(255, 255, 255);
+}
+
+.secondhalf {
+    background-color: rgba(158, 158, 158, 0.506);
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+
+.buttons i {
+    scale: 2.6;
+    background-color: transparent;
+    transition: 0.3s;
+    margin: 4rem 2rem;
+    background-color: rgba(158, 158, 158, 0.506);
+    padding: 0.2rem 0.3rem;
+    cursor: pointer;
+}
+
+.buttons i:hover {
+    
+    text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.589);
+    scale: 2.7;
+}
+
+.buttons i.secondhalf:hover {
+    
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.589);
+}
+
+
+.fa-pause {
+    color: rgba(131, 131, 131, 0.582);
+}
+
+.buttons i:active {
+    color: rgb(81, 81, 81);
+}
+
+@media (max-width:600px ) {
+    div.numbers span {
+        font-size: 15vw;
+        padding: 0rem 3vw;
+    }
+
+    .buttons i {
+        scale: 1.9;
+        margin: 3rem 1rem;
+    }
+}
+
+@media (max-width:270px ) {
+    .buttons i {
+        scale: 1.3;
+        margin: 3rem 0.5rem;
+    }
+}
