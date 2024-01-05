@@ -1,70 +1,60 @@
-export function Timer({
-    segundo1, 
-     segundo2,
-     minutos1,
-     minutos2,
-     intervalo,
-     rodando,
-    }){
+export function Timer({seconds1, seconds2, minutes1, minutes2, interval, running,}){
+
     function init() {
-    if(! rodando) {
-     intervalo = setInterval(() => {
+    if(! running) {
+     interval = setInterval(() => {
         
-        segundo1++
-        if(segundo1 >= 10) {
-            segundo1 = 0
-            segundo2++
+        seconds1++
+        if(seconds1 >= 10) {
+            seconds1 = 0
+            seconds2++
         }
     
-        if(segundo2 >= 6 ) {
-            minutos1++
-            segundo2 = 0
+        if(seconds2 >= 6 ) {
+            minutes1++
+            seconds2 = 0
         }
     
-        if( minutos1 >= 10){
-            minutos2++
-            minutos1 = 0
+        if( minutes1 >= 10){
+            minutes2++
+            minutes1 = 0
         }
     
         
-        document.getElementById("1").textContent = minutos2
-        document.getElementById("2").textContent = minutos1
-        document.getElementById("3").textContent = segundo2
-        document.getElementById("4").textContent = segundo1
-        document.title = `${minutos2}${minutos1}:${segundo2}${segundo1}`
+        document.getElementById("1").textContent = minutes2
+        document.getElementById("2").textContent = minutes1
+        document.getElementById("3").textContent = seconds2
+        document.getElementById("4").textContent = seconds1
+        document.title = `${minutes2}${minutes1}:${seconds2}${seconds1}`
         
     
-        console.log(minutos2, minutos1, segundo2, segundo1)
+        console.log(minutes2, minutes1, seconds2, seconds1)
         
         
-    }, 1000);
-}
-    rodando = true
-}
-
-
-function stop() {
-     clearInterval(intervalo)
-     rodando = false
-     segundo1 = 0
-     segundo2 = 0
-     minutos1 = 0
-     minutos2 = 0
-     document.getElementById("1").textContent = 0
-     document.getElementById("2").textContent = 0
-     document.getElementById("3").textContent = 0
-     document.getElementById("4").textContent = 0
+        }, 1000);
+    }
+    running = true
 }
 
-function pause() {
-    clearInterval(intervalo)
-    rodando = false
-}
+    function stop() {
+        clearInterval(interval)
+        running = false
+        seconds1 = 0
+        seconds2 = 0
+        minutes1 = 0
+        minutes2 = 0
+        document.getElementById("1").textContent = 0
+        document.getElementById("2").textContent = 0
+        document.getElementById("3").textContent = 0
+        document.getElementById("4").textContent = 0
+    }
 
-return {
-    pause,
-    stop,
-    init,
-}
+    function pause() {
+        clearInterval(interval)
+        running = false
+    }
+
+    return {pause,stop,init,}
+
 }
 
