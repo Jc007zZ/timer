@@ -1,60 +1,49 @@
-export function Timer({seconds1, seconds2, minutes1, minutes2, interval, running,}){
+export function Timer({secondsUnit, secondsTen, minutesUnit, minutesTen, interval}){
 
     function init() {
-    if(! running) {
      interval = setInterval(() => {
-        
-        seconds1++
-        if(seconds1 >= 10) {
-            seconds1 = 0
-            seconds2++
+        secondsUnit++
+        if(secondsUnit >= 10) {
+            secondsUnit = 0
+            secondsTen++
         }
     
-        if(seconds2 >= 6 ) {
-            minutes1++
-            seconds2 = 0
+        if(secondsTen >= 6 ) {
+            minutesUnit++
+            secondsTen = 0
         }
     
-        if( minutes1 >= 10){
-            minutes2++
-            minutes1 = 0
+        if( minutesUnit >= 10){
+            minutesTen++
+            minutesUnit = 0
         }
-    
-        
-        document.getElementById("1").textContent = minutes2
-        document.getElementById("2").textContent = minutes1
-        document.getElementById("3").textContent = seconds2
-        document.getElementById("4").textContent = seconds1
-        document.title = `${minutes2}${minutes1}:${seconds2}${seconds1}`
-        
-    
-        console.log(minutes2, minutes1, seconds2, seconds1)
-        
-        
+        updateDisplay(minutesUnit, minutesTen, secondsUnit, secondsTen)
         }, 1000);
-    }
-    running = true
 }
 
+
+    function updateDisplay(minutesUnit, minutesTen, secondsUnit, secondsTen) {
+        document.getElementById("1").textContent = minutesTen
+        document.getElementById("2").textContent = minutesUnit
+        document.getElementById("3").textContent = secondsTen
+        document.getElementById("4").textContent = secondsUnit
+        document.title = `${minutesTen}${minutesUnit}:${secondsTen}${secondsUnit}`
+    }
+
     function stop() {
-        clearInterval(interval)
-        running = false
-        seconds1 = 0
-        seconds2 = 0
-        minutes1 = 0
-        minutes2 = 0
-        document.getElementById("1").textContent = 0
-        document.getElementById("2").textContent = 0
-        document.getElementById("3").textContent = 0
-        document.getElementById("4").textContent = 0
+        pause()
+        secondsUnit = 0
+        secondsTen = 0
+        minutesUnit = 0
+        minutesTen = 0
+        updateDisplay(minutesUnit, minutesTen, secondsUnit, secondsTen)
     }
 
     function pause() {
         clearInterval(interval)
-        running = false
     }
 
-    return {pause,stop,init,}
+    return {pause, stop, init}
 
 }
 
